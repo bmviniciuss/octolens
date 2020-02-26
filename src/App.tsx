@@ -6,11 +6,9 @@ import theme from './styles/theme'
 
 function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Router />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router />
+    </ThemeProvider>
   )
 }
 

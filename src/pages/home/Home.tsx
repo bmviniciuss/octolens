@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { Wrapper } from '../../styles/SharedStyles'
-import { HomeWrapper, HomeLogo, HomeInput, HomeForm } from './HomeStyles'
+import {
+  BlueGradientHorizontal,
+  FullHeightWrapper
+} from '../../styles/SharedStyles'
+import { HomeWrapper, HomeLogoTitle, HomeInput, HomeForm } from './HomeStyles'
 
 const Home: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -17,11 +20,13 @@ const Home: React.FC = () => {
   }
 
   return (
-    <Wrapper>
+    <FullHeightWrapper>
+      <BlueGradientHorizontal />
+
       <HomeWrapper>
-        <HomeLogo data-testid="home-octolens-logo">
+        <HomeLogoTitle data-testid="home-octolens-logo">
           Octo<strong>Lens</strong>
-        </HomeLogo>
+        </HomeLogoTitle>
         <HomeForm onSubmit={handleSubmit} data-testid="home-form">
           <HomeInput
             data-testid="home-input"
@@ -31,7 +36,7 @@ const Home: React.FC = () => {
           />
         </HomeForm>
       </HomeWrapper>
-    </Wrapper>
+    </FullHeightWrapper>
   )
 }
 
