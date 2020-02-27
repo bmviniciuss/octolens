@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect'
 import { cleanup, fireEvent } from '@testing-library/react'
+import faker from 'faker'
 import React from 'react'
 
 import { Home } from '../..'
@@ -16,7 +17,7 @@ describe('HomePage Component', () => {
   })
 
   it('should redirect user when input is not empty', () => {
-    const testUsername = 'bmviniciuss'
+    const testUsername = faker.internet.userName()
     const { getByTestId, history } = renderWithRouter(<Home />)
 
     // elements
@@ -32,8 +33,9 @@ describe('HomePage Component', () => {
     expect(homeInput.value).toEqual('')
 
     // testing redirect
-    expect(history.location.pathname).toEqual(`/u`)
-    expect(history.location.search).toEqual(`?search=${testUsername}`)
+    expect(history.location.pathname).toEqual(
+      `/profile/${testUsername.toLowerCase()}`
+    )
   })
 
   it('should not redirect user when input is empty', () => {

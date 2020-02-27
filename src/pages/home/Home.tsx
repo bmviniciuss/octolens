@@ -15,7 +15,7 @@ const Home: React.FC = () => {
     e.preventDefault()
     if (username) {
       setUsername('')
-      history.push(`/u?search=${username}`)
+      history.push(`/profile/${username.toLowerCase()}`)
     }
   }
 
