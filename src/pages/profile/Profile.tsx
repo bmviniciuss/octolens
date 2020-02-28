@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { ProfileHeader } from '../../components/profile'
-import { BlueGradientHorizontal } from '../../styles/SharedStyles'
+import { BlueGradientHorizontal, Wrapper } from '../../styles/SharedStyles'
 import { ProfileType } from '../../types/githubApi'
-import { ProfileWrapper } from './ProfileStyles'
+import { ProfileWrapper, Content } from './ProfileStyles'
 
 interface StateType {
   data?: ProfileType
@@ -84,10 +84,15 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <ProfileWrapper>
+    <>
       <BlueGradientHorizontal />
-      <ProfileHeader profile={fake} />
-    </ProfileWrapper>
+      <Wrapper>
+        <ProfileWrapper>
+          <ProfileHeader profile={fake} />
+          <Content>Content</Content>
+        </ProfileWrapper>
+      </Wrapper>
+    </>
   )
 }
 

@@ -1,15 +1,4 @@
-type themeType = {
-  colors: {
-    [key: string]: {
-      [key: string]: string
-    }
-  }
-  shadows: {
-    [key: string]: string
-  }
-}
-
-const theme: themeType = {
+const theme = {
   colors: {
     gray: {
       2: 'hsl(200, 5%, 2%)',
