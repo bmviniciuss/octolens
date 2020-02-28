@@ -1,4 +1,5 @@
 import React from 'react'
+import { GoLocation } from 'react-icons/go'
 
 import { ProfileType } from '../../../types/githubApi'
 import {
@@ -9,7 +10,10 @@ import {
   MetaWrapper,
   MetaCard,
   MetaCardTitle,
-  MetaCardContent
+  MetaCardContent,
+  ProfileLogin,
+  ProfileContent,
+  ProfileLocation
 } from './ProfileHeaderStyles'
 
 interface Props {
@@ -23,9 +27,21 @@ const ProfileHeader: React.FC<Props> = ({ profile }) => {
         src={profile?.avatar_url}
         alt={`${profile?.name} profile`}
       />
-      <ProfileName data-testid="profile-name">{profile.name}</ProfileName>
-      <ProfileBio>{profile.bio}</ProfileBio>
-      <MetaWrapper>
+      <ProfileContent>
+        <ProfileName data-testid="profile-name">{profile.name}</ProfileName>
+        <ProfileLogin data-testid="profile-login">
+          <a href={profile.html_url} target="_blank" rel="noopener noreferrer">
+            {`@${profile.login}`}
+          </a>
+        </ProfileLogin>
+        <ProfileBio>{profile.bio}</ProfileBio>
+        {profile.location && (
+          <ProfileLocation>
+            <GoLocation /> {profile.location}
+          </ProfileLocation>
+        )}
+      </ProfileContent>
+      {/* <MetaWrapper>
         <MetaCard>
           <MetaCardTitle>Repos</MetaCardTitle>
           <MetaCardContent>{profile.public_repos}</MetaCardContent>
@@ -40,7 +56,7 @@ const ProfileHeader: React.FC<Props> = ({ profile }) => {
           <MetaCardTitle>Following</MetaCardTitle>
           <MetaCardContent>{profile.following}</MetaCardContent>
         </MetaCard>
-      </MetaWrapper>
+      </MetaWrapper> */}
     </ProfileHeaderWrapper>
   )
 }

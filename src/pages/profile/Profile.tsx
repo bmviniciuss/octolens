@@ -85,7 +85,7 @@ const Profile: React.FC = () => {
 
   return (
     <>
-      <BlueGradientHorizontal />
+      {/* <BlueGradientHorizontal /> */}
       <Wrapper>
         <ProfileWrapper>
           <ProfileHeader profile={fake} />
