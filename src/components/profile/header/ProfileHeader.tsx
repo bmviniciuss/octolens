@@ -1,5 +1,6 @@
 import React from 'react'
-import { GoLocation } from 'react-icons/go'
+import { AiOutlineUsergroupAdd, AiOutlineUser } from 'react-icons/ai'
+import { GoLocation, GoRepo } from 'react-icons/go'
 
 import { ProfileType } from '../../../types/githubApi'
 import {
@@ -7,13 +8,12 @@ import {
   ProfileAvatar,
   ProfileName,
   ProfileBio,
-  MetaWrapper,
-  MetaCard,
-  MetaCardTitle,
-  MetaCardContent,
   ProfileLogin,
   ProfileContent,
-  ProfileLocation
+  ProfileLocation,
+  MetaContent,
+  MetaItem,
+  ProfileImage
 } from './ProfileHeaderStyles'
 
 interface Props {
@@ -23,10 +23,12 @@ interface Props {
 const ProfileHeader: React.FC<Props> = ({ profile }) => {
   return (
     <ProfileHeaderWrapper data-testid="profile-header">
-      <ProfileAvatar
-        src={profile?.avatar_url}
-        alt={`${profile?.name} profile`}
-      />
+      <ProfileAvatar>
+        <ProfileImage
+          src={profile.avatar_url}
+          alt={`${profile?.name} profile`}
+        />
+      </ProfileAvatar>
       <ProfileContent>
         <ProfileName data-testid="profile-name">{profile.name}</ProfileName>
         <ProfileLogin data-testid="profile-login">
@@ -36,27 +38,24 @@ const ProfileHeader: React.FC<Props> = ({ profile }) => {
         </ProfileLogin>
         <ProfileBio>{profile.bio}</ProfileBio>
         {profile.location && (
-          <ProfileLocation>
+          <ProfileLocation style={{ marginTop: '1.5rem' }}>
             <GoLocation /> {profile.location}
           </ProfileLocation>
         )}
       </ProfileContent>
-      {/* <MetaWrapper>
-        <MetaCard>
-          <MetaCardTitle>Repos</MetaCardTitle>
-          <MetaCardContent>{profile.public_repos}</MetaCardContent>
-        </MetaCard>
-
-        <MetaCard>
-          <MetaCardTitle>Followers</MetaCardTitle>
-          <MetaCardContent>{profile.followers}</MetaCardContent>
-        </MetaCard>
-
-        <MetaCard>
-          <MetaCardTitle>Following</MetaCardTitle>
-          <MetaCardContent>{profile.following}</MetaCardContent>
-        </MetaCard>
-      </MetaWrapper> */}
+      <MetaContent>
+        <MetaItem>
+          <GoRepo /> <strong>{profile.public_repos}</strong>
+          {` Repositories`}
+        </MetaItem>
+        <MetaItem style={{ marginTop: '1rem' }}>
+          <AiOutlineUsergroupAdd /> <strong>{profile.followers}</strong>{' '}
+          {`Followers`}
+        </MetaItem>
+        <MetaItem style={{ marginTop: '1rem' }}>
+          <AiOutlineUser /> <strong>{profile.following}</strong> {`Following`}
+        </MetaItem>
+      </MetaContent>
     </ProfileHeaderWrapper>
   )
 }
