@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { cleanup } from '@testing-library/react'
 import React from 'react'
 
-import { renderWithRouter } from '../../utils/renderWithRouter'
+import { renderWithRouter } from '../../utils/testRenders'
 import { Routes } from '../Router'
 
 afterEach(cleanup)

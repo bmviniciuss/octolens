@@ -10,6 +10,13 @@ interface Input {
   history?: MemoryHistory<History.PoorMansUnknown>
 }
 
+export function renderWithTheme(ui: React.ReactElement) {
+  const Wrapper: React.FC = ({ children }) => <WithTheme>{children}</WithTheme>
+  return {
+    ...render(ui, { wrapper: Wrapper })
+  }
+}
+
 export function renderWithRouter(
   ui: React.ReactElement,
   {

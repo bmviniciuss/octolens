@@ -4,7 +4,7 @@ import faker from 'faker'
 import React from 'react'
 
 import { Home } from '../..'
-import { renderWithRouter } from '../../../utils/renderWithRouter'
+import { renderWithRouter } from '../../../utils/testRenders'
 
 afterEach(cleanup)
 
