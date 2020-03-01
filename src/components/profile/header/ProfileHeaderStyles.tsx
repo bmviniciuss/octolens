@@ -11,7 +11,7 @@ export const ProfileHeaderWrapper = styled.div`
 `
 export const ProfileContent = styled.div`
   padding: 1rem;
-  background-color: ${({ theme }) => `${theme.colors.g.lighter}`};
+  background-color: ${({ theme: { colors } }) => `${colors.g.lighter}`};
 `
 export const ProfileAvatar = styled.div`
   width: 100%;

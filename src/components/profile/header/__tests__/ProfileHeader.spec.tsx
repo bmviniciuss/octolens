@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom/extend-expect'
-import { cleanup, render } from '@testing-library/react'
+import { cleanup, render, getDefaultNormalizer } from '@testing-library/react'
 import React from 'react'
 
 import { ProfileHeader } from '../..'
+import { renderWithTheme } from '../../../../utils/testRenders'
+import WithTheme from '../../../../utils/WithTheme'
 
 afterEach(cleanup)
 
@@ -45,12 +47,23 @@ const mockProfile = {
 
 describe('ProfileHeader Component', () => {
   it('renders ProfileHeader Component correctly', async () => {
-    const { getByTestId, getByAltText } = render(
+    const { getByTestId, getByAltText, getByText } = renderWithTheme(
       <ProfileHeader profile={mockProfile} />
     )
 
     expect(getByTestId('profile-header')).toBeDefined()
-    expect(getByTestId('profile-name').textContent).toEqual(mockProfile.name)
+    expect(getByTestId('profile-login').textContent).toEqual(
+      `@${mockProfile.login}`
+    )
     expect(getByAltText(`${mockProfile.name} profile`)).toBeDefined()
+    expect(getByText(/repositories/i).textContent).toEqual(
+      `${mockProfile.public_repos} Repositories`
+    )
+    expect(getByText(/followers/i).textContent).toEqual(
+      `${mockProfile.followers} Followers`
+    )
+    expect(getByText(/following/i).textContent).toEqual(
+      `${mockProfile.following} Following`
+    )
   })
 })

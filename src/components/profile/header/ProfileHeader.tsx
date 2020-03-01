@@ -36,24 +36,35 @@ const ProfileHeader: React.FC<Props> = ({ profile }) => {
             {`@${profile.login}`}
           </a>
         </ProfileLogin>
-        <ProfileBio>{profile.bio}</ProfileBio>
+        <ProfileBio data-testid="profile-bio">{profile.bio}</ProfileBio>
         {profile.location && (
-          <ProfileLocation style={{ marginTop: '1.5rem' }}>
+          <ProfileLocation
+            style={{ marginTop: '1.5rem' }}
+            data-testid="profile-location"
+          >
             <GoLocation /> {profile.location}
           </ProfileLocation>
         )}
       </ProfileContent>
       <MetaContent>
-        <MetaItem>
-          <GoRepo /> <strong>{profile.public_repos}</strong>
-          {` Repositories`}
+        <MetaItem data-testid="profile-repositories">
+          <GoRepo />{' '}
+          <span>
+            <strong>{profile.public_repos}</strong>
+            {` Repositories`}
+          </span>
         </MetaItem>
-        <MetaItem style={{ marginTop: '1rem' }}>
-          <AiOutlineUsergroupAdd /> <strong>{profile.followers}</strong>{' '}
-          {`Followers`}
+        <MetaItem style={{ marginTop: '1rem' }} data-testid="profile-followers">
+          <AiOutlineUsergroupAdd />{' '}
+          <span>
+            <strong>{profile.followers}</strong> {`Followers`}
+          </span>
         </MetaItem>
-        <MetaItem style={{ marginTop: '1rem' }}>
-          <AiOutlineUser /> <strong>{profile.following}</strong> {`Following`}
+        <MetaItem style={{ marginTop: '1rem' }} data-testid="profile-following">
+          <AiOutlineUser />{' '}
+          <span>
+            <strong>{profile.following}</strong> {`Following`}
+          </span>
         </MetaItem>
       </MetaContent>
     </ProfileHeaderWrapper>
