@@ -31,6 +31,13 @@ const theme = {
       base: 'hsl(208,63%,48%)',
       light: 'hsl(208,72%,65%)',
       lighter: 'hsl(208,70%,87%)'
+    },
+    error: {
+      darker: 'hsl(0,65%,22%)',
+      dark: 'hsl(0,68%,31%)',
+      base: 'hsl(0,68%,51%)',
+      light: 'hsl(357,65%,62%)',
+      lighter: 'hsl(0,50%,92%)'
     }
   },
   shadows: {
