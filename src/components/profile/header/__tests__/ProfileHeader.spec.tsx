@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react'
 import React from 'react'
 
 import { ProfileHeader } from '../..'
-import { userFactory } from '../../../../factories'
+import { userFactory } from '../../../../factories/userFactory'
 import { renderWithTheme } from '../../../../utils/testRenders'
 
 afterEach(cleanup)
