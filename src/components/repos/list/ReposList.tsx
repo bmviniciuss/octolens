@@ -1,6 +1,6 @@
-import _ from 'lodash'
 import React, { useMemo, useState } from 'react'
 
+import { sortRepos } from '../../../helpers/sortRepos'
 import { RepoType } from '../../../types/githubApi'
 import RepoListItem from '../item/RepoListItem'
 import {
@@ -17,7 +17,7 @@ const ReposList: React.FC<Props> = ({ repos }) => {
   const [numberRepos] = useState(10)
 
   const sortedRepos = useMemo(() => {
-    return _.orderBy(repos, ['stargazers_count', 'name'], ['desc', 'asc'])
+    return sortRepos(repos)
   }, [repos])
 
   return (

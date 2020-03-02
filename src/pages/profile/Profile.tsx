@@ -33,48 +33,32 @@ const Profile: React.FC = () => {
 
   // profile
   useEffect(() => {
-    let mounted = true
     axios
       .get(`https://api.github.com/users/${username}`)
       .then(({ data }) => {
-        if (mounted) {
-          setProfile(data)
-        }
+        setProfile(data)
       })
       .catch(() => {
-        if (mounted) {
-          setError(true)
-        }
+        setError(true)
       })
-    return () => {
-      mounted = false
-    }
   }, [username])
 
-  // repos
+  // // repos
   useEffect(() => {
-    let mounted = true
     axios
       .get(`https://api.github.com/users/${username}/repos`)
       .then(({ data }) => {
-        if (mounted) {
-          setRepos(data)
-        }
+        setRepos(data)
       })
       .catch(() => {
-        if (mounted) {
-          setError(true)
-        }
+        setError(true)
       })
-    return () => {
-      mounted = false
-    }
   }, [username])
 
   if (error) {
     return (
       <CenteredState>
-        <ErrorCard>
+        <ErrorCard data-testid="error">
           <ErrorTitle>Ops!</ErrorTitle>
           <ErrorMessage>
             An error occurred while trying to fetch <strong>{username}</strong>{' '}
@@ -91,6 +75,7 @@ const Profile: React.FC = () => {
     return (
       <CenteredState>
         <LoadingSpinner
+          data-testid="loading"
           delay={100}
           type="spinningBubbles"
           color="hsl(215,22%,17%)"
@@ -102,12 +87,12 @@ const Profile: React.FC = () => {
   return (
     <>
       <Wrapper>
-        <ProfileWrapper>
+        <ProfileWrapper data-testid="profile-data">
           <div>
             <ProfileHeader profile={profile} />
           </div>
           <div>
-            <ReposContent>
+            <ReposContent data-testid="repos-data">
               <ReposList repos={repos} />
             </ReposContent>
           </div>

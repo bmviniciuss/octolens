@@ -104,7 +104,10 @@
       "!<rootDir>/src/utils/WithTheme.tsx",
       "!<rootDir>/src/router/**/*",
       "!<rootDir>/src/pages/index.ts",
-      "!<rootDir>/src/libs/fetch.ts"
+      "!<rootDir>/src/libs/fetch.ts",
+      "!<rootDir>/src/libs/fetch.ts",
+      "!<rootDir>/src/components/**/index.ts"
+
     ]
   }
 }
