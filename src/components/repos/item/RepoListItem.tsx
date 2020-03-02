@@ -18,7 +18,7 @@ interface Props {
 
 const RepoListItem: React.FC<Props> = ({ repo }) => {
   return (
-    <ReposListItem>
+    <ReposListItem data-testid="repo-item">
       <RepoName>
         <div>
           <GoRepo />
