@@ -24,25 +24,31 @@ const RepoListItem: React.FC<Props> = ({ repo }) => {
           <GoRepo />
         </div>
         <div>
-          <a href={repo.html_url}>{repo.name}</a>
+          <a href={repo.html_url} data-testid="repo-name">
+            {repo.name}
+          </a>
         </div>
       </RepoName>
-      <RepoDescription>{repo.description}</RepoDescription>
+      <RepoDescription data-testid="repo-description">
+        {repo.description}
+      </RepoDescription>
       <RepoMeta>
         <RepoLanguage>
           {repo.language && (
             <span>
               <span className="repo-square">■</span>
-              {repo.language}
+              <span data-testid="repo-language">{repo.language}</span>
             </span>
           )}
         </RepoLanguage>
         <RepoStats>
           <RepoStatsItem>
-            <GoStar /> {repo.stargazers_count}
+            <GoStar />{' '}
+            <span data-testid="repo-stars">{repo.stargazers_count}</span>
           </RepoStatsItem>
           <RepoStatsItem>
-            <GoRepoForked /> {repo.forks_count}
+            <GoRepoForked />{' '}
+            <span data-testid="repo-forks">{repo.forks_count}</span>
           </RepoStatsItem>
         </RepoStats>
       </RepoMeta>
