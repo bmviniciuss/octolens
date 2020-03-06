@@ -6,7 +6,18 @@ import React from 'react'
 import { Home } from '../..'
 import { renderWithRouter } from '../../../utils/testRenders'
 
-afterEach(cleanup)
+const mockHistoryPush = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush
+  })
+}))
+afterEach(() => {
+  cleanup()
+  mockHistoryPush.mockClear()
+})
 
 describe('HomePage Component', () => {
   it('renders HomePage Component correctly', async () => {
@@ -18,7 +29,8 @@ describe('HomePage Component', () => {
 
   it('should redirect user when input is not empty', () => {
     const testUsername = faker.internet.userName()
-    const { getByTestId, history } = renderWithRouter(<Home />)
+
+    const { getByTestId } = renderWithRouter(<Home />)
 
     // elements
     const homeInput = getByTestId('home-input') as HTMLInputElement
@@ -33,13 +45,14 @@ describe('HomePage Component', () => {
     expect(homeInput.value).toEqual('')
 
     // testing redirect
-    expect(history.location.pathname).toEqual(
+    expect(mockHistoryPush).toHaveBeenCalledTimes(1)
+    expect(mockHistoryPush).toHaveBeenCalledWith(
       `/profile/${testUsername.toLowerCase()}`
     )
   })
 
   it('should not redirect user when input is empty', () => {
-    const { getByTestId, history } = renderWithRouter(<Home />)
+    const { getByTestId } = renderWithRouter(<Home />)
 
     // elements
     const homeInput = getByTestId('home-input') as HTMLInputElement
@@ -50,7 +63,6 @@ describe('HomePage Component', () => {
     expect(homeInput.value).toEqual('')
 
     // testing redirect
-    expect(history.location.pathname).toEqual('/')
-    expect(history.location.search).toEqual('')
+    expect(mockHistoryPush).toHaveBeenCalledTimes(0)
   })
 })
