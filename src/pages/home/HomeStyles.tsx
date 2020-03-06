@@ -24,6 +24,9 @@ export const HomeLogoTitle = styled.h1`
   strong {
     font-weight: 700;
   }
+  @media screen and (max-width: 683px) {
+    font-size: 3.5rem;
+  }
 `
 
 export const HomeForm = styled.form`
