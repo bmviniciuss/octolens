@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import {
-  BlueGradientHorizontal,
-  FullHeightWrapper
-} from '../../styles/SharedStyles'
+import { FullHeightWrapper } from '../../styles/SharedStyles'
 import { HomeWrapper, HomeLogoTitle, HomeInput, HomeForm } from './HomeStyles'
 
 const Home: React.FC = () => {
@@ -21,8 +18,6 @@ const Home: React.FC = () => {
 
   return (
     <FullHeightWrapper>
-      <BlueGradientHorizontal />
-
       <HomeWrapper>
         <HomeLogoTitle data-testid="home-octolens-logo">
           Octo<strong>Lens</strong>
