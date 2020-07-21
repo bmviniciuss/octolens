@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci" : "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.{ts,tsx}'",
     "lint:fix": "prettier-eslint ${PWD}/'**/*.{ts,tsx}' --write"
@@ -80,18 +81,6 @@
     ]
   },
   "jest": {
-    "coverageThreshold": {
-      "global": {
-        "branches": 95,
-        "functions": 95,
-        "lines": 95,
-        "statments": 95
-      }
-    },
-    "coverageReporters": [
-      "html",
-      "text"
-    ],
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.{ts,tsx}",
       "!<rootDir>/src/serviceWorker.ts",
